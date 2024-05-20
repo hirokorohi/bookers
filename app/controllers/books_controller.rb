@@ -1,17 +1,17 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
-  
+
+
   def index
     @books = Book.all
   end
- 
-  
+
+
 
 
   def create
     book = Book.new(book_params)
     if book.save
-      flash[:notice] = '投稿に成功しました。'
+      flash[:notice]
       redirect_to '/books'
     else
       flash.now[:alert] = '投稿に失敗しました。'
@@ -23,8 +23,8 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
   end
-    
-  
+
+
 
   def edit
     @book = Book.find(params[:id])
@@ -39,6 +39,7 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     book.destroy
+    flash[:notice] = 'Are you'
     redirect_to '/books'
   end
 
